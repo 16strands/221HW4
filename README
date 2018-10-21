@@ -1,0 +1,26 @@
+NOTE: For testing purposes I have implemented a user input asking for npoints, but when running (time ./pi) I removed this because I realized that the timer counts the amount of time it takes me to enter the input. 
+
+ANOTHER NOTE: When compiling the constexpr part I have had to include (-std=c++14) in the command line because constexpr was added in c++11 and for loops and variable declarations were added to constexpr in c++14. 
+
+BEFORE USING CONSTEXPR
+npoints piestimate  time(seconds)
+10      3.52        .003
+100     3.1812      .005
+1000    3.14554     .014
+10000   3.14199     .590
+
+The complexity of this program is O(npoints^2) because of the nested for loop dependent on npoints and otherwise constant operations. 
+
+The time measurements sort of match the runtime expectation. They don't match exactly becuase of a few reasons:
+    1. Variablility in runtime (running (time ./pi) multiple times yields different results)
+    2. Constant time operations which must be done no matter the input size
+    3. Complexity and 'time it takes to run the program' are separate (related, but separate) concepts. Complexity is much more of a general and useful thing to know because it carries over between computers, whereas 'time it takes to run the program' is specific to the machine and conditions at runtime. 
+
+USING CONSTEXPR
+npoints piestimate  time(seconds)
+10      3.52        .004
+100     3.1812      .007
+1000    3.14554     .014
+
+Huh. Not much has changed. I can only assume that I was supposed to use c++11 and somehow recursively estimate pi because that's pretty much all c++11 allows in constexpr. 
+
